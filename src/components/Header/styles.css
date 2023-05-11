@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        font-family: Roboto;
+    }
+    h1 {
+        @apply text-3xl;
+    }
+    h2 {
+        @apply text-2xl;
+    }
+    h3 {
+        @apply text-xl;
+    }
+    ul {
+        padding: 0.5rem;
+    }
+    ul,
+    ol {
+        list-style: revert;
+        list-style-position: inside;
+    }
+    button {
+        transition: 0.3s !important;
+    }
+    header {
+        display: grid;
+        grid-template-columns: 1fr 60vw 1fr;
+        align-items: center;
+        border-bottom: 0.1px solid #ffffff1f;
+        padding: 6px 20vw;
+        min-height: 8vh;
+        height: fit-content;
+    }
+    .header-inside {
+        display: grid;
+        /* justify-content: space-around; */
+        align-items: center;
+        grid-template-columns: 1fr 1fr;
+    }
+    .logo-href {
+        width: fit-content;
+    }
+    .logo {
+        color: white;
+        font-weight: 800;
+        letter-spacing: 6px;
+        user-select: none;
+    }
+    .text-gradient {
+        background-image: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-position: 100%;
+    }
+    .logo:hover {
+        background-image: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-position: 100%;
+    }
+    .menu {
+        align-self: center;
+        justify-self: end;
+        display: flex;
+        gap: 3rem;
+    }
+    .menu .menu-url {
+        color: white;
+        transition: background-position 10s ease-in-out,
+            -webkit-background-clip 10s ease-in-out,
+            -webkit-text-fill-color 10s ease-in-out;
+        letter-spacing: 4px;
+        cursor: pointer;
+        width: fit-content;
+        font-weight: 600;
+        user-select: none;
+        transition: 0.3s;
+    }
+    .menu a:hover {
+        background-image: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-position: 100%;
+    }
+    /* ... */
+}

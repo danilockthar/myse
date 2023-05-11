@@ -1,0 +1,53 @@
+---
+import { CollectionEntry, getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+    const blogPosts = await getCollection("blog", ({ data }) => {
+        return !data.draft;
+    });
+    return blogPosts.map((post) => ({
+        params: { slug: post.slug },
+        props: { post },
+    }));
+}
+
+interface Props {
+    post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<Layout title="codeando-ando">
+    <main>
+        <h1>{post.data.title}</h1>
+        <div id="content-wrapper">
+            <Content />
+        </div>
+    </main>
+</Layout>
+
+<style>
+    main {
+        margin: 100px auto;
+        max-width: 60vw;
+        padding: 4rem;
+        background: #ffffff03;
+        border-radius: 10px;
+    }
+    p {
+        color: white;
+    }
+    pre {
+        display: block;
+        background: none;
+        white-space: pre;
+        -webkit-overflow-scrolling: touch;
+        overflow-x: scroll;
+        max-width: 100%;
+        min-width: 100px;
+        padding: 0;
+    }
+</style>
